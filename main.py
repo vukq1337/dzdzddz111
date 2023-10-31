@@ -39,16 +39,35 @@ class Dog(Animal):
     def make_sound(self):
         print(f"{self.name} says Woof!")
 
-# Приклад використання класу:
+class Human:
+    def __init__(self, name):
+        self.name = name
+
+    def feed(self, animal, food):
+        print(f"{self.name} is feeding {animal.name} with {food}.")
+        animal.eat(random.randint(5, 15))
+
+    def play_with_animal(self, animal, time):
+        print(f"{self.name} is playing with {animal.name}.")
+        animal.play(time)
+
+# Приклад використання класів:
 if __name__ == "__main__":
     cat = Cat("Whiskers", "Cat")
     dog = Dog("Buddy", "Dog")
+    human = Human("Alice")
 
     for _ in range(3):
         cat.make_sound()
-        cat.eat(random.randint(5, 15))
-        cat.play(random.randint(10, 30))
+        human.feed(cat, "fish")
+        human.play_with_animal(cat, random.randint(10, 30))
         cat.sleep(random.randint(5, 10))
+
+    for _ in range(3):
+        dog.make_sound()
+        human.feed(dog, "bone")
+        human.play_with_animal(dog, random.randint(15, 40))
+        dog.sleep(random.randint(6, 12))
 
     for _ in range(3):
         dog.make_sound()
