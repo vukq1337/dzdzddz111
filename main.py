@@ -1,34 +1,25 @@
-class Person:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
-        self.account = None
+result = []
 
-    def open_account(self, initial_balance):
-        self.account = BankAccount(initial_balance)
+def divider(a, b):
+    try:
+        if a < b:
+            raise ValueError("a should be greater than or equal to b")
+        if b > 100:
+            raise IndexError("b should be less than or equal to 100")
+        return a/b
+    except ValueError as ve:
+        print(f"ValueError: {ve}")
+    except IndexError as ie:
+        print(f"IndexError: {ie}")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+    return None
 
-    def get_account_balance(self):
-        if self.account:
-            return self.account.get_balance()
-        else:
-            return "Клієнт не має банківського рахунку."
+data = {10: 2, 2: 5, "123": 4, 18: 0, []: 15, 8 : 4}
 
+for key in data:
+    res = divider(key, data[key])
+    if res is not None:
+        result.append(res)
 
-class BankAccount:
-    def __init__(self, initial_balance=0):
-        self.balance = initial_balance
-
-    def deposit(self, amount):
-        self.balance += amount
-
-    def withdraw(self, amount):
-        if amount <= self.balance:
-            self.balance -= amount
-        else:
-            print("Недостатньо коштів на рахунку.")
-
-    def get_balance(self):
-        return self.balance
-
-print(dog.name)
-print(cat.name)
+print(result)
